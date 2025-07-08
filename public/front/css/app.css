@@ -4016,6 +4016,9 @@ h1 {
     padding-top: 30px;
   }
 }
+.twiceColumn .rightColumn {
+  flex: 1;
+}
 
 .moreButton {
   margin: 50px auto;

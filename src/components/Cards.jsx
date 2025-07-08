@@ -1,7 +1,7 @@
 export default function Cards({ children, moreHandleClick, products, isLoading, total }){
     return(
         <>
-            <div>
+            <div className="rightColumn">
                 <div className="cards productCards">
                     {children}
                 </div>
