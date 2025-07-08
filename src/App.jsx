@@ -22,8 +22,6 @@ export default function App() {
     const res = await fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`);
     const data = await res.json();
 
-    console.log("data : " + data);
-
     setProducts(prev => [...prev, ...data.products]);
     setTotal(data.total);
     setIsLoading(false);
