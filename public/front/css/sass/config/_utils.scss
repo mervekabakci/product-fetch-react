@@ -1,0 +1,317 @@
+@use "sass:math";
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --primary: #242424;
+  --secondary: #f3213c;
+  --tertiary: #201e94;
+  --bg-color: #ecf0f5;
+  --text: #383737;
+
+  --gray: #ecf0f5;
+  --gray-100: #e3e6eb;
+  --gray-200: #cecfd1;
+  --gray-300: #bebebe;
+  --gray-400: #b1b0b0;
+  --gray-500: #a09e9e;
+  --gray-600: #929191;
+  --gray-700: #777777;
+  --gray-800: #6b6b6b;
+  --gray-900: #5c5b5b;
+}
+$gutter: 1rem;
+
+/*burada tanımlanan renkler class olarak kullanabılırız*/
+$primary: var(--primary);
+$secondary: var(--secondary);
+$tertiary: var(--tertiary);
+$white: var(--white);
+$black: var(--black);
+$gray-100: var(--gray-100);
+$gray-200: var(--gray-200);
+$gray-300: var(--gray-300);
+$gray-400: var(--gray-400);
+$gray-500: var(--gray-500);
+$gray-600: var(--gray-600);
+$gray-700: var(--gray-700);
+$gray-800: var(--gray-800);
+$gray-900: var(--gray-900);
+
+$colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "tertiary": $tertiary,
+  "white": $white,
+  "black": $black,
+  "gray-100": $gray-100,
+  "gray-200": $gray-200,
+  "gray-300": $gray-300,
+  "gray-400": $gray-400,
+  "gray-500": $gray-500,
+  "gray-600": $gray-600,
+  "gray-700": $gray-700,
+  "gray-800": $gray-800,
+  "gray-900": $gray-900,
+);
+//bg-primary seklınde burada tanımlanan renklerı kullanarak bg rengını class ıle degıstırebılır
+//Ayrıca bu sayede tema seceneklerı de olusturabılırız.
+@mixin generate-background-classes($colors) {
+  @each $name, $color in $colors {
+    .bg-#{$name} {
+      background-color: $color !important;
+    }
+  }
+}
+@include generate-background-classes($colors);
+//backgorund class name end
+
+//button class name start
+@mixin generate-button-classes($colors) {
+  @each $name, $color in $colors {
+    .button {
+      &-#{$name} {
+        background-color: $color !important;
+        border: 1px solid $color !important;
+        transition: all 0.3s linear;
+
+        @media screen and (min-width: 992px) {
+          &:not(:disabled) {
+            &:hover {
+              color: $color !important;
+            }
+          }
+        }
+
+        @if $name == "white" {
+          color: $primary !important;
+          &:after {
+            background-color: $primary !important;
+          }
+        } @else {
+          color: $white !important;
+          &:after {
+            background-color: $white !important;
+          }
+        }
+
+        &-outline {
+          background-color: rgba(0, 0, 0, 0) !important;
+          color: $color !important;
+          border-color: $color !important;
+          &:after {
+            background-color: $color !important;
+          }
+          @media screen and (min-width: 992px) {
+            &:hover {
+              &:not(:disabled){
+
+                @if $name == "white" {
+                  color: $primary !important;
+                } @else {
+                  color: $white !important;
+                }
+              }
+            }
+          }
+        }
+      }
+      &:disabled{
+        filter: grayscale(1)
+      }
+    }
+  }
+}
+
+@include generate-button-classes($colors);
+//button class name end
+
+//container breakpoint tanımlamaları
+@mixin min($bp, $max: "null", $device: "screen") {
+  @if $max == "null" {
+    @media only #{$device} and (min-width: #{$bp}) {
+      @content;
+    }
+  } @else {
+    @media only #{$device} and (min-width: #{$bp}) and (max-width: #{$max}) {
+      @content;
+    }
+  }
+}
+@function bp($bp) {
+  @return map-get($breakpoints, $bp);
+}
+//ekran ölçü aralıklarının tanımlanması
+$breakpoints: (
+  xs: 320px,
+  sm: 576px,
+  md: 992px,
+  lg: 1200px,
+  xl: 1440px,
+  xxl: 1600px,
+  xxxl: 1700px,
+  big: 1920px,
+);
+@function container($container-size, $true-val: false) {
+  @return map-get($container-sizes, $container-size);
+}
+$container-sizes: (
+  xs: map-get($breakpoints, xs),
+  sm: map-get($breakpoints, sm),
+  md: map-get($breakpoints, md),
+  lg: map-get($breakpoints, lg),
+  xl: map-get($breakpoints, xl),
+  xxl: map-get($breakpoints, xxl),
+  xxxl: map-get($breakpoints, xxxl),
+  big: map-get($breakpoints, big),
+);
+.container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 0 auto;
+  &:not(.is-fluid) {
+    max-width: 1440px;
+  }
+  &.is-fluid {
+    @each $bp, $container-size in $container-sizes {
+      @include min(#{bp(#{$bp})}) {
+        width: 100%;
+        max-width: container(#{$bp});
+      }
+    }
+  }
+}
+@each $bp, $container-size in $container-sizes {
+  .container {
+    max-width: 1440px;
+    &-#{$bp} {
+      margin: 0 auto;
+      padding-right: 30px;
+      padding-left: 30px;
+      width: 100%;
+      @media screen and (max-width: 991.98px) {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      $i: index($container-sizes, $bp $container-size);
+
+      @for $j from $i through length($container-sizes) {
+        @include min(#{bp(nth(nth($container-sizes, $j), 1))}) {
+          max-width: container(#{nth(nth($container-sizes, $j), 1)});
+        }
+      }
+    }
+  }
+}
+row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(-#{$gutter} / 2);
+  margin-right: calc(-#{$gutter} / 2);
+}
+
+[class*="col-"] {
+  padding-left: calc(#{$gutter} / 2);
+  padding-right: calc(#{$gutter} / 2);
+
+  & > * {
+    width: 100%;
+  }
+}
+
+//col sınıfları olusturmak ıcın
+//$breakpoint bunun ıcerısınde tanımlanmıs olan px olculerını ekran olculerı olarak alır.
+@mixin generate-cols($breakpoint, $min-width) {
+  //1 den 12 ye kadar değer uretıyoruz burayı arttırdıkca col-1 den col-12 ye kadar gıderken bu aralıgı buradan degıstırebılırız
+  @for $i from 1 through 12 {
+    //burada da media query icin classlarımızı belırlıyoruz
+    //col-md-576px gibi degerlerı css ıcerısınde tum belırtılen pointlerle bırlıkte olusturur ve bız bunları class olarak kullanırız.
+    .col-#{$breakpoint}-#{$i} {
+      width: 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+
+      @media (min-width: $min-width) {
+        $colWidth: math.div(100%, 12) * $i;
+        width: #{$colWidth};
+        flex: 0 0 #{$colWidth};
+        max-width: #{$colWidth};
+      }
+    }
+  }
+}
+//burada ise tum classları yukarıdaki mix yapısına gore generate eder
+@each $name, $size in $breakpoints {
+  @include generate-cols($name, $size);
+}
+
+$display-utils: (
+  "none": none,
+  "block": block,
+  "inline": inline,
+  "inline-block": inline-block,
+  "flex": flex,
+  "inline-flex": inline-flex,
+  "grid": grid,
+);
+@mixin generate-display-classes($displays, $breakpoints) {
+  // Global sınıflar: d-flex, d-block, vs.
+  @each $key, $value in $displays {
+    .d-#{$key} {
+      display: $value !important;
+    }
+  }
+
+  // Responsive sınıflar: d-md-flex, d-lg-block, vs.
+  @each $bp-name, $bp-size in $breakpoints {
+    @each $key, $value in $displays {
+      @media (min-width: $bp-size) {
+        .d-#{$bp-name}-#{$key} {
+          display: $value !important;
+        }
+      }
+    }
+  }
+}
+@include generate-display-classes($display-utils, $breakpoints);
+
+/*gap start*/
+@for $i from 1 through 12 {
+  .gap-#{$i} {
+    gap: #{($i * 5)}px;
+  }
+  @each $bp-name, $bp-size in $breakpoints {
+    @media (min-width: $bp-size) {
+      .gap-#{$bp-name}-#{$i} {
+        gap: #{($i * 5)}px !important;
+      }
+    }
+  }
+}
+/*gap end*/
+
+.grids {
+  display: grid;
+  @for $i from 1 through 12 {
+    .col-span-#{$i} {
+      grid-column: span $i;
+    }
+    .row-span-#{$i} {
+      grid-row: span $i;
+    }
+    &.grid-columns-#{$i} {
+      grid-template-columns: repeat($i, 1fr);
+    }
+  }
+}
+/*line clamp start*/
+@for $i from 1 through 12 {
+  .line-clamp_#{$i} {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-line-clamp: $i;
+  }
+}
+/*line clamp end*/

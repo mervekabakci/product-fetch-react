@@ -1,0 +1,11 @@
+footer{
+    background-color: var(--white);
+    height: 60px;
+    display: flex;
+    align-items: center;
+
+    .copyRight{
+        font-size: 13px;
+        color: var(--text);
+    }
+}

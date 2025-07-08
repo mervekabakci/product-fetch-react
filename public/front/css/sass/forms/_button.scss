@@ -1,0 +1,44 @@
+button {
+  padding: 0;
+  outline: 0;
+  border: none;
+}
+
+.fixBtn {
+  background-color: var(--white);
+  color: var(--primary);
+  border: 1px solid var(--white);
+  border-radius: 10px;
+  height: 45px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  gap: 10px;
+  &:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transition: width 0.3s;
+    z-index: -1;
+  }
+  @media screen and (min-width: 992px) {
+    &:hover {
+      &:not(:disabled) {
+        &:after {
+          width: 100%;
+        }
+      }
+    }
+  }
+  &:disabled {
+    filter: grayscale(1) brightness(220%);
+  }
+}

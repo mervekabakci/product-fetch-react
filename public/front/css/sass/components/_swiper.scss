@@ -1,0 +1,44 @@
+.swiper-button-prev,
+.swiper-button-next{
+    &:after{
+        color: var(--white);
+        font-size: 60px!important;
+    }
+}
+.swiper-button-prev{
+    left: 20px!important;
+}
+.swiper-button-next{
+   right: 20px!important;
+}
+.swiper-button-next{
+    &:after{
+        content: "\e900"!important;
+        font-family: 'customFont'!important;
+        transform: rotate(180deg);
+    }
+}
+.swiper-rtl{
+    .swiper-button-prev{
+        &:after{
+            content: "\e900"!important;
+            font-family: 'customFont'!important;
+        }
+    }
+}
+
+.swiper-button-prev{
+    &:after{
+        content: "\e900"!important;
+        font-family: 'customFont'!important;
+    }
+}
+.swiper-rtl{
+    .swiper-button-next{
+        &:after{
+            content: "\e900"!important;
+            font-family: 'customFont'!important;
+            transform: rotate(180deg);
+        }
+    }
+}

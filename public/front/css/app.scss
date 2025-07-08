@@ -1,0 +1,16 @@
+@import "sass/config/index";
+@import "sass/components/index";
+@import "sass/forms/index";
+@import "sass/theme/index";
+
+
+.main{
+    padding-top: 70px;
+}
+.center{
+    padding-top: 20px;
+    max-width:1200px;
+    margin: 0 auto;
+    min-height: calc(100vh - 130px);
+    padding-bottom: 100px;
+}

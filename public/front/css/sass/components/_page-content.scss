@@ -1,0 +1,84 @@
+h1{
+  font-size: 36px;
+  text-align: center;
+  font-weight: 700;
+  color: crimson;
+  margin-left: 300px;
+  margin-top: 30px;
+  @media screen and (max-width:991.98px) {
+    margin-left: 0;
+    font-size: 24px;
+  }
+}
+.pageContentWrapper {
+  padding-block: 50px;
+}
+.paragraph {
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--text);
+  font-weight: 400;
+
+  b {
+    font-weight: 600;
+    color: var(--secondary);
+  }
+  a {
+    font-weight: 700;
+    color: var(--secondary);
+    position: relative;
+    &:after {
+      content: "";
+      border-bottom: 1px dotted var(--secondary);
+      width: 100%;
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      transition: all 0.3s linear;
+    }
+    @media screen and (min-width: 992px) {
+      &:hover {
+        &:after {
+          width: 0;
+        }
+      }
+    }
+  }
+  ul,
+  ol{
+    list-style-type: disc;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    li{
+        padding: 3px 0;
+        &::marker{
+            color: var(--secondary);
+            font-weight: 700;
+        }
+    }
+  }
+  ol{
+    list-style-type: decimal;
+  }
+}
+
+
+.twiceColumn{
+  display: flex;
+  align-items: flex-start;
+  gap: 50px;
+  padding-top: 50px;
+  @media screen and (max-width:991.98px) {
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 30px;
+  }
+}
+
+.moreButton{
+  margin: 50px auto;
+  @media screen and (max-width:991.98px) {
+    margin: 30px auto;
+  }
+}
