@@ -38,10 +38,13 @@ export default function ProductProvider({ children}){
     }, [skip]);
 
     useEffect(() => {
-        const uniqueCategories = Array.from(new Set(products.map(x => x.category)));
-        setCategories(uniqueCategories);
-    }, [products]);
-
+        const fetchCategories = async () => {
+            const res = await fetch('https://dummyjson.com/products/categories');
+            const data = await res.json();
+            setCategories(data);  // data zaten string dizisi
+        }
+        fetchCategories();
+    }, []);
 
     // const categories = Array.from(new Set(products.map(x => x.category)));
 
