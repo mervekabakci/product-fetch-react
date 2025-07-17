@@ -103,8 +103,7 @@ $colors: (
           }
           @media screen and (min-width: 992px) {
             &:hover {
-              &:not(:disabled){
-
+              &:not(:disabled) {
                 @if $name == "white" {
                   color: $primary !important;
                 } @else {
@@ -115,8 +114,8 @@ $colors: (
           }
         }
       }
-      &:disabled{
-        filter: grayscale(1)
+      &:disabled {
+        filter: grayscale(1);
       }
     }
   }
@@ -241,8 +240,13 @@ row {
   }
 }
 //burada ise tum classları yukarıdaki mix yapısına gore generate eder
-@each $name, $size in $breakpoints {
-  @include generate-cols($name, $size);
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  
+  @each $name, $size in $breakpoints {
+    @include generate-cols($name, $size);
+  }
 }
 
 $display-utils: (

@@ -1,9 +1,20 @@
-export default function Cards({ children, moreHandleClick, products, isLoading, total }){
+import { useContext } from "react";
+import CardItem from "./CardItem";
+import { ProductContext } from "../pages/ProductContext";
+
+export default function Cards(){
+    const { moreHandleClick, products, isLoading, total, filteredProducts } = useContext(ProductContext);
+    
+    console.log("prod :", products)
+    if (!products) return <div>Yükleniyor...</div>;
+
     return(
         <>
             <div className="rightColumn">
                 <div className="cards productCards">
-                    {children}
+                     {filteredProducts.map((product) => (
+                        <CardItem key={product.id} product={product} />
+                    ))}
                 </div>
 
                 <div className="d-flex">

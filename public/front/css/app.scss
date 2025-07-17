@@ -3,7 +3,9 @@
 @import "sass/forms/index";
 @import "sass/theme/index";
 
-
+body{
+    place-content: center;
+}
 .main{
     padding-top: 70px;
 }

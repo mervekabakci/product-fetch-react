@@ -1,26 +1,34 @@
-export default function CardItem({ filteredProducts }){
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { CartContext } from "../pages/CartContext";
+
+export default function CardItem({ product }){
+    const { addToCart } = useContext(CartContext);
+
     return(
         <>
-            {
-                filteredProducts.map(x => 
-                  <div className="card" key={x.id}>
-                    <span className="category">{x.category}</span>
+            <div className="card" key={product.id}>
+                <span className="category">{product.category}</span>
+                <Link to={`/product/${product.id}`}>
                     <figure>
-                        <img src={x.thumbnail} alt={x.thumbnail} />
+                    <img src={product.thumbnail} alt={product.title} />
                     </figure>
-                    <div className="card-body">
-                        <div className="title">{x.title}</div>
-                        <div className="description line-clamp_3">{x.description}</div>
+                </Link>
+                <div className="card-body">
+                    <div className="title">{product.title}</div>
+                    <div className="description line-clamp_3">{product.description}</div>
+                </div>
+                <div className="card-footer">
+                    <div className="prod-prop">
+                    <span className="price">{product.price} TL</span>
+                    <span className="stock">Stok: {product.stock} adet</span>
                     </div>
-                    <div className="card-footer">
-                        <div className="prod-prop">
-                            <span className="price">{x.price} TL</span>
-                            <span className="stock">Stok: {x.stock} adet</span>
-                        </div>
-                    </div>
-                  </div>
-                )
-              }
+                    <button onClick={() => addToCart(product)} className="fixBtn button-primary">
+                    Sepete Ekle
+                    </button>
+                </div>
+            </div>
+          
         </>
     )
 }

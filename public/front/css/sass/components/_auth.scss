@@ -1,0 +1,94 @@
+.login-form, .register-form {
+  background-color: #FFF;
+  max-width: 350px;
+  margin: 60px auto;
+  padding: 32px 28px 24px 28px;
+  border-radius: 10px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.login-form label, .register-form label {
+  display: flex;
+  flex-direction: column;
+  color: #222;
+}
+
+.login-form input, 
+.register-form input, 
+.register-form select {
+  margin-top: 6px;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+}
+
+button[type='submit'] {
+  background: #2563eb;
+  color: #FFF;
+  border: none;
+  padding: 10px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 8px;
+  transition: background 0.2s;
+}
+
+button[type='submit']:hover {
+  background-color: #1d4ed8;
+}
+
+.switch-link {
+  display: block;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.switch-link a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 4px;
+}
+
+.switch-link a:hover {
+  text-decoration: underline;
+}
+
+.welcome-message {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  background-color: #f7fafc;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.welcome-message h2 {
+  color: #2d3748;
+}
+
+.welcome-message p {
+  margin: 8px 0;
+  color: #4a5568;
+}
+
+.welcome-message button {
+  margin-top: 20px;
+  padding: 10px 28px;
+  background-color: #3182ce;
+  color: #FFF;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.welcome-message button:hover {
+  background-color: #225ea8;
+}
