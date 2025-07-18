@@ -7,11 +7,16 @@
   background-color: var(--white);
   z-index: 99;
   padding: 80px 30px 50px;
-  transition: all .3s linear;
+  transition: all 0.3s linear;
+  overflow: hidden;
+  overflow-y: auto;
+  @media screen and (max-width: 991.98px) {
+    width: 100%;
+  }
   .clearCarts {
     margin-top: 30px;
   }
-  &.opened{
+  &.opened {
     right: 0;
   }
   .closeCart {
@@ -26,6 +31,7 @@
     flex-direction: column;
     gap: 20px;
     padding-top: 30px;
+
     .shoppingCard {
       display: flex;
       align-items: center;
@@ -33,6 +39,10 @@
       border: 1px solid var(--gray);
       padding: 20px 10px;
       border-radius: 10px;
+      @media screen and (max-width: 991.98px) {
+        padding-top: 40px;
+        align-items: flex-start;
+      }
       figure {
         width: 50px;
         overflow: hidden;
@@ -58,6 +68,11 @@
         justify-content: flex-start;
         justify-content: space-between;
         gap: 10px;
+        @media screen and (max-width: 991.98px) {
+          flex-direction: column;
+          align-items: flex-start;
+          position: relative;
+        }
         .name {
           font-size: 16px;
           line-height: 22px;
@@ -73,11 +88,19 @@
           width: auto;
           display: inline-flex;
           font-style: italic;
+          @media screen and (max-width: 991.98px) {
+            position: absolute;
+            left: -60px;
+            bottom: calc(100% + 5px);
+          }
         }
         .price {
           font-size: 20px;
           font-weight: 600;
           margin-left: 10px;
+          @media screen and (max-width: 991.98px) {
+            margin-left: 0;
+          }
         }
         .numericCounter {
           display: flex;
@@ -85,6 +108,10 @@
           font-size: 14px;
           color: var(--primary);
           font-weight: 500;
+          @media screen and (max-width: 991.98px) {
+            flex-direction: column;
+            align-items: flex-start;
+          }
         }
         .totalPayment {
           font-size: 20px;
@@ -92,6 +119,10 @@
           margin-left: 10px;
           color: crimson;
           padding-left: 15px;
+          @media screen and (max-width: 991.98px) {
+            margin-left: 0;
+            padding-left: 0;
+          }
         }
       }
       .deleteButton {
@@ -107,6 +138,11 @@
         border-radius: 4px;
         border: 1px solid crimson;
         transition: all 0.3s linear;
+        @media screen and (max-width: 991.98px) {
+          position: absolute;
+          top: -30px;
+          right: 10px;
+        }
         @media screen and (min-width: 992px) {
           &:hover {
             color: crimson;
@@ -131,6 +167,9 @@
   flex-direction: column;
   border-radius: 10px;
   gap: 10px;
+  @media screen and (max-width: 991.98px) {
+    padding: 20px;
+  }
   .item {
     background-color: var(--white);
     border-radius: 6px;
@@ -139,11 +178,17 @@
     align-items: center;
     gap: 10px;
     justify-content: space-between;
+    @media screen and (max-width: 991.98px) {
+      font-size: 14px;
+    }
 
     span {
       color: var(--secondary);
       font-size: 20px;
       font-weight: 600;
+      @media screen and (max-width: 991.98px) {
+        font-size: 16px;
+      }
     }
   }
 }

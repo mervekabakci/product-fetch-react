@@ -5,7 +5,6 @@ import { ProductContext } from "../pages/ProductContext";
 export default function Cards(){
     const { moreHandleClick, products, isLoading, total, filteredProducts } = useContext(ProductContext);
     
-    console.log("prod :", products)
     if (!products) return <div>Yükleniyor...</div>;
 
     return(

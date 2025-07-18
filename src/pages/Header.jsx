@@ -19,8 +19,7 @@ export default function Header({ onToggleCart }){
                     {user && 
                         <ul className="userNavBar nav">
                             <li className="navItem"><a href="#" onClick={onToggleCart} className="navLink">Sepetim ({totalQuantity})</a></li>
-                            <li className="navItem"><Link className="navLink" to="/auth">Profilim</Link></li>
-                            <li className="navItem">Hoşgeldin <span className="userName"> {user.ad.slice(0,1)}.{user.soyad.slice(0,1)}</span> </li>
+                            <li className="navItem"><Link className="navLink" to="/auth">Hoşgeldin <span className="userName"> {user.ad.slice(0,1)}.{user.soyad.slice(0,1)}</span></Link></li>
                         </ul>
                     }
                 </div>

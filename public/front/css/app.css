@@ -3699,35 +3699,6 @@ header .navBrands {
   }
 }
 
-@media screen and (max-width: 991.98px) {
-  .navbar {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    left: 0;
-    top: 0;
-    background: var(--white);
-    padding: 100px 30px 50px;
-    transition: all 0.3s linear;
-    left: 100%;
-  }
-}
-@media screen and (max-width: 576px) {
-  .navbar {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-}
-@media screen and (min-width: 992px) {
-  .navbar {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    flex: 1;
-    height: 100%;
-    gap: 40px;
-  }
-}
 .navbar .buttons {
   display: flex;
   align-items: center;
@@ -3761,17 +3732,25 @@ header .navBrands {
   font-weight: 600;
   font-size: 16px;
 }
+@media screen and (max-width: 991.98px) {
+  .nav .navItem {
+    font-size: 14px;
+  }
+}
 .nav .navLink {
   color: var(--primary);
   transition: all 0.3s linear;
   font-weight: 600;
   font-size: 16px;
   display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 @media screen and (max-width: 991.98px) {
   .nav .navLink {
     margin: 5px 0;
     padding: 6px 0;
+    font-size: 14px;
   }
 }
 @media screen and (min-width: 992px) {
@@ -3788,9 +3767,35 @@ header .navBrands {
   color: var(--primary);
   font-weight: 500;
 }
+@media screen and (max-width: 991.98px) {
+  .userNavBar {
+    font-size: 14px;
+    margin-left: auto;
+  }
+}
+@media screen and (min-width: 992px) {
+  .userNavBar {
+    margin-left: auto;
+  }
+}
 .userNavBar .userName {
   font-size: 20px;
   font-weight: 700;
+  width: 50px;
+  height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary);
+  border-radius: 100%;
+  color: var(--white);
+}
+@media screen and (max-width: 991.98px) {
+  .userNavBar .userName {
+    font-size: 14px;
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .swiper-button-prev:after,
@@ -4062,6 +4067,13 @@ button[type=submit]:hover {
   z-index: 99;
   padding: 80px 30px 50px;
   transition: all 0.3s linear;
+  overflow: hidden;
+  overflow-y: auto;
+}
+@media screen and (max-width: 991.98px) {
+  .shoppingCartWrapper {
+    width: 100%;
+  }
 }
 .shoppingCartWrapper .clearCarts {
   margin-top: 30px;
@@ -4090,6 +4102,12 @@ button[type=submit]:hover {
   padding: 20px 10px;
   border-radius: 10px;
 }
+@media screen and (max-width: 991.98px) {
+  .shoppingCartWrapper .shoppingCards .shoppingCard {
+    padding-top: 40px;
+    align-items: flex-start;
+  }
+}
 .shoppingCartWrapper .shoppingCards .shoppingCard figure {
   width: 50px;
   overflow: hidden;
@@ -4115,6 +4133,13 @@ button[type=submit]:hover {
   justify-content: space-between;
   gap: 10px;
 }
+@media screen and (max-width: 991.98px) {
+  .shoppingCartWrapper .shoppingCards .shoppingCard .info {
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+  }
+}
 .shoppingCartWrapper .shoppingCards .shoppingCard .info .name {
   font-size: 16px;
   line-height: 22px;
@@ -4131,10 +4156,22 @@ button[type=submit]:hover {
   display: inline-flex;
   font-style: italic;
 }
+@media screen and (max-width: 991.98px) {
+  .shoppingCartWrapper .shoppingCards .shoppingCard .info .category {
+    position: absolute;
+    left: -60px;
+    bottom: calc(100% + 5px);
+  }
+}
 .shoppingCartWrapper .shoppingCards .shoppingCard .info .price {
   font-size: 20px;
   font-weight: 600;
   margin-left: 10px;
+}
+@media screen and (max-width: 991.98px) {
+  .shoppingCartWrapper .shoppingCards .shoppingCard .info .price {
+    margin-left: 0;
+  }
 }
 .shoppingCartWrapper .shoppingCards .shoppingCard .info .numericCounter {
   display: flex;
@@ -4143,12 +4180,24 @@ button[type=submit]:hover {
   color: var(--primary);
   font-weight: 500;
 }
+@media screen and (max-width: 991.98px) {
+  .shoppingCartWrapper .shoppingCards .shoppingCard .info .numericCounter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
 .shoppingCartWrapper .shoppingCards .shoppingCard .info .totalPayment {
   font-size: 20px;
   font-weight: 600;
   margin-left: 10px;
   color: crimson;
   padding-left: 15px;
+}
+@media screen and (max-width: 991.98px) {
+  .shoppingCartWrapper .shoppingCards .shoppingCard .info .totalPayment {
+    margin-left: 0;
+    padding-left: 0;
+  }
 }
 .shoppingCartWrapper .shoppingCards .shoppingCard .deleteButton {
   width: 24px;
@@ -4163,6 +4212,13 @@ button[type=submit]:hover {
   border-radius: 4px;
   border: 1px solid crimson;
   transition: all 0.3s linear;
+}
+@media screen and (max-width: 991.98px) {
+  .shoppingCartWrapper .shoppingCards .shoppingCard .deleteButton {
+    position: absolute;
+    top: -30px;
+    right: 10px;
+  }
 }
 @media screen and (min-width: 992px) {
   .shoppingCartWrapper .shoppingCards .shoppingCard .deleteButton:hover {
@@ -4186,6 +4242,11 @@ button[type=submit]:hover {
   border-radius: 10px;
   gap: 10px;
 }
+@media screen and (max-width: 991.98px) {
+  .summaryWrapper {
+    padding: 20px;
+  }
+}
 .summaryWrapper .item {
   background-color: var(--white);
   border-radius: 6px;
@@ -4195,10 +4256,20 @@ button[type=submit]:hover {
   gap: 10px;
   justify-content: space-between;
 }
+@media screen and (max-width: 991.98px) {
+  .summaryWrapper .item {
+    font-size: 14px;
+  }
+}
 .summaryWrapper .item span {
   color: var(--secondary);
   font-size: 20px;
   font-weight: 600;
+}
+@media screen and (max-width: 991.98px) {
+  .summaryWrapper .item span {
+    font-size: 16px;
+  }
 }
 
 button {

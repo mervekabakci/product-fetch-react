@@ -8,7 +8,7 @@ export default function FilterSelect() {
             <select onChange={handleChangeSelect}>
                 <option value="">Filter Categories</option>
                 {categories.map((category, index) => (
-                     <option key={index} value={category.slug}>{category.name}</option>
+                     <option key={index} value={category}>{category}</option>
                 ))}
             </select>
         </div>
