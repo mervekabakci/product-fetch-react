@@ -2484,6 +2484,10 @@ row {
     display: grid !important;
   }
 }
+.align-items-center {
+  align-items: center;
+}
+
 /*gap start*/
 .gap-1 {
   gap: 5px;
@@ -3492,34 +3496,6 @@ row {
           clip-path: polygon(0px 0%, calc(100% - 0px) 0%, 90% 54%, calc(99% + 5px) 100%, 0px 100%, 0% 65%);
 }
 
-.shoppingCards .shoppingCard {
-  display: flex;
-  align-items: stretch;
-  min-height: 150px;
-}
-.shoppingCards .shoppingCard figure {
-  width: 150px;
-  overflow: hidden;
-  border: 1px solid red;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.shoppingCards .shoppingCard .info {
-  flex: 1;
-  border: 1px solid gray;
-  display: flex;
-  align-items: center;
-}
-
-.numericCounter {
-  display: flex;
-  align-items: center;
-}
-.numericCounter input {
-  width: 50px;
-}
-
 footer {
   background-color: var(--white);
   height: 60px;
@@ -3537,8 +3513,9 @@ header {
   height: 70px;
   position: fixed;
   width: 100%;
-  z-index: 99;
+  z-index: 999;
   top: 0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
 }
 header .header {
   height: 100%;
@@ -3751,43 +3728,6 @@ header .navBrands {
     gap: 40px;
   }
 }
-@media screen and (max-width: 991.98px) {
-  .navbar .nav {
-    padding: 30px 0;
-    text-align: center;
-  }
-}
-@media screen and (min-width: 992px) {
-  .navbar .nav {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-}
-.navbar .nav .navItem {
-  color: var(--primary);
-  transition: all 0.3s linear;
-  font-weight: 600;
-  font-size: 16px;
-}
-.navbar .nav .navLink {
-  color: var(--primary);
-  transition: all 0.3s linear;
-  font-weight: 600;
-  font-size: 16px;
-  display: inline-flex;
-}
-@media screen and (max-width: 991.98px) {
-  .navbar .nav .navLink {
-    margin: 5px 0;
-    padding: 6px 0;
-  }
-}
-@media screen and (min-width: 992px) {
-  .navbar .nav .navLink:hover {
-    color: var(--secondary);
-  }
-}
 .navbar .buttons {
   display: flex;
   align-items: center;
@@ -3800,6 +3740,57 @@ header .navBrands {
 }
 .navbar.opened {
   left: 0;
+}
+
+@media screen and (max-width: 991.98px) {
+  .nav {
+    padding: 30px 0;
+    text-align: center;
+  }
+}
+@media screen and (min-width: 992px) {
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+}
+.nav .navItem {
+  color: var(--primary);
+  transition: all 0.3s linear;
+  font-weight: 600;
+  font-size: 16px;
+}
+.nav .navLink {
+  color: var(--primary);
+  transition: all 0.3s linear;
+  font-weight: 600;
+  font-size: 16px;
+  display: inline-flex;
+}
+@media screen and (max-width: 991.98px) {
+  .nav .navLink {
+    margin: 5px 0;
+    padding: 6px 0;
+  }
+}
+@media screen and (min-width: 992px) {
+  .nav .navLink:hover {
+    color: var(--secondary);
+  }
+}
+
+.userNavBar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 16px;
+  color: var(--primary);
+  font-weight: 500;
+}
+.userNavBar .userName {
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .swiper-button-prev:after,
@@ -3878,7 +3869,7 @@ h1 {
   font-weight: 700;
   color: crimson;
   margin-left: 300px;
-  margin-top: 30px;
+  margin-top: 90px;
 }
 @media screen and (max-width: 991.98px) {
   h1 {
@@ -4061,6 +4052,155 @@ button[type=submit]:hover {
   background-color: #225ea8;
 }
 
+.shoppingCartWrapper {
+  position: fixed;
+  height: calc(100vh - 70px);
+  width: 600px;
+  bottom: 0;
+  right: -100%;
+  background-color: var(--white);
+  z-index: 99;
+  padding: 80px 30px 50px;
+  transition: all 0.3s linear;
+}
+.shoppingCartWrapper .clearCarts {
+  margin-top: 30px;
+}
+.shoppingCartWrapper.opened {
+  right: 0;
+}
+.shoppingCartWrapper .closeCart {
+  font-size: 40px;
+  color: var(--secondary);
+  font-weight: 600;
+  position: absolute;
+  top: 10px;
+}
+.shoppingCartWrapper .shoppingCards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 30px;
+}
+.shoppingCartWrapper .shoppingCards .shoppingCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--gray);
+  padding: 20px 10px;
+  border-radius: 10px;
+}
+.shoppingCartWrapper .shoppingCards .shoppingCard figure {
+  width: 50px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray);
+  border-radius: 4px;
+}
+.shoppingCartWrapper .shoppingCards .shoppingCard figure .imageWrapper img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  max-height: 100%;
+  max-width: 100%;
+  min-height: auto;
+  min-width: auto;
+}
+.shoppingCartWrapper .shoppingCards .shoppingCard .info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+.shoppingCartWrapper .shoppingCards .shoppingCard .info .name {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 700;
+  color: crimson;
+}
+.shoppingCartWrapper .shoppingCards .shoppingCard .info .category {
+  font-size: 12px;
+  background-color: crimson;
+  padding: 2px 4px;
+  color: var(--white);
+  font-weight: 500;
+  width: auto;
+  display: inline-flex;
+  font-style: italic;
+}
+.shoppingCartWrapper .shoppingCards .shoppingCard .info .price {
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 10px;
+}
+.shoppingCartWrapper .shoppingCards .shoppingCard .info .numericCounter {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: var(--primary);
+  font-weight: 500;
+}
+.shoppingCartWrapper .shoppingCards .shoppingCard .info .totalPayment {
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 10px;
+  color: crimson;
+  padding-left: 15px;
+}
+.shoppingCartWrapper .shoppingCards .shoppingCard .deleteButton {
+  width: 24px;
+  height: 24px;
+  background-color: crimson;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 4px;
+  border: 1px solid crimson;
+  transition: all 0.3s linear;
+}
+@media screen and (min-width: 992px) {
+  .shoppingCartWrapper .shoppingCards .shoppingCard .deleteButton:hover {
+    color: crimson;
+    background-color: var(--white);
+  }
+}
+.shoppingCartWrapper .numericCounter {
+  display: flex;
+  align-items: center;
+}
+.shoppingCartWrapper .numericCounter input {
+  width: 50px;
+}
+
+.summaryWrapper {
+  background-color: var(--gray);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  gap: 10px;
+}
+.summaryWrapper .item {
+  background-color: var(--white);
+  border-radius: 6px;
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+.summaryWrapper .item span {
+  color: var(--secondary);
+  font-size: 20px;
+  font-weight: 600;
+}
+
 button {
   padding: 0;
   outline: 0;
@@ -4100,6 +4240,7 @@ button {
 }
 .fixBtn:disabled {
   filter: grayscale(1) brightness(220%);
+  pointer-events: none;
 }
 
 body {

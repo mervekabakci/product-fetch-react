@@ -93,32 +93,3 @@
     }
   }
 }
-
-.shoppingCards{
-  .shoppingCard{
-    display: flex;
-    align-items: stretch;
-    min-height: 150px;
-    figure{
-      width: 150px;
-      overflow: hidden;
-      border: 1px solid red;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .info{
-      flex: 1;
-      border: 1px solid gray;
-      display: flex;
-      align-items: center;
-    }
-  }
-}
-.numericCounter{
-  display: flex;
-  align-items: center;
-  input{
-    width: 50px;
-  }
-}

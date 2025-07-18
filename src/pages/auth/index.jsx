@@ -1,16 +1,24 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { UserContext } from './UserContext';
 
 export default function Auth() {
   const { user, setUser } = useContext(UserContext);
-  
+  const navigate = useNavigate();
   const [showLogin, setShowLogin] = useState(true);
 
   const handleLogout = () => {
+    localStorage.removeItem('loggedInUser');
     setUser(null);
     setShowLogin(true);
   }
 
+  useEffect(() => {
+    if (localStorage.loggedInUser) {
+      const savedUser = JSON.parse(localStorage.loggedInUser);
+      setUser(savedUser);
+    }
+  }, []);
   return (
     <>
       {user ? (

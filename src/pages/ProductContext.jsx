@@ -65,6 +65,7 @@ export default function ProductProvider({ children}){
     return(
         <ProductContext.Provider value={{
             products,
+            setProducts,
             filteredProducts,
             categories,
             searchPro,
@@ -76,9 +77,6 @@ export default function ProductProvider({ children}){
             moreHandleClick,
         }}>
             {children}
-            {/* <CartProvider>
-                <Products />
-            </CartProvider> */}
         </ProductContext.Provider>
     )
 }

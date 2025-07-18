@@ -279,6 +279,9 @@ $display-utils: (
 }
 @include generate-display-classes($display-utils, $breakpoints);
 
+.align-items-center{
+  align-items: center;
+}
 /*gap start*/
 @for $i from 1 through 12 {
   .gap-#{$i} {

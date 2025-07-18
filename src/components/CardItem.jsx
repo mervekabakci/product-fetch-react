@@ -9,11 +9,11 @@ export default function CardItem({ product }){
         <>
             <div className="card" key={product.id}>
                 <span className="category">{product.category}</span>
-                <Link to={`/product/${product.id}`}>
+                <div>
                     <figure>
                     <img src={product.thumbnail} alt={product.title} />
                     </figure>
-                </Link>
+                </div>
                 <div className="card-body">
                     <div className="title">{product.title}</div>
                     <div className="description line-clamp_3">{product.description}</div>
@@ -23,8 +23,10 @@ export default function CardItem({ product }){
                     <span className="price">{product.price} TL</span>
                     <span className="stock">Stok: {product.stock} adet</span>
                     </div>
-                    <button onClick={() => addToCart(product)} className="fixBtn button-primary">
-                    Sepete Ekle
+                    <button
+                        disabled={product.stock <= 0}
+                        onClick={() => addToCart(product)} className="fixBtn button-primary">
+                        {product.stock <= 0 ? "Stok Tükendi" : "Sepete Ekle"}
                     </button>
                 </div>
             </div>

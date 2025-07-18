@@ -1,26 +1,24 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { BrowserRouter  as Router, Route, Routes, Navigate  } from 'react-router-dom';
 import { UserContext } from './pages/auth/UserContext';
 import Auth from './pages/auth';
 import Header from './pages/Header';
 import Products from './pages/Products';
-import ShoppingCart from './pages/ShoppingCart';
-import ProductDetail from './pages/ProductDetail';
 
 export default function MainRoutes(){
     const { user } = useContext(UserContext);
+    const [cartOpened, setCartOpened] = useState(false);
+    const toggleCart = () => setCartOpened(prev => !prev);
 
     return(
         <>
             <Router>
-            {user && <Header />}
+            {user && <Header onToggleCart={toggleCart} />}
                 <Routes>
                     <Route path="/auth" element={<Auth />} />
                     {user ? (
                     <>
-                        <Route path="/products" element={<Products />} />
-                        <Route path="/shopping-cart" element={<ShoppingCart />} />
-                        <Route path="/products/:id" element={<ProductDetail />} />
+                        <Route path="/products" element={<Products cartOpened={cartOpened} toggleCart={toggleCart} />} />
                         <Route path="*" element={<Navigate to="/products" />} />
                     </>
                     ) : (

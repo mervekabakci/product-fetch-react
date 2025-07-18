@@ -40,5 +40,6 @@ button {
   }
   &:disabled {
     filter: grayscale(1) brightness(220%);
+    pointer-events: none;
   }
 }
