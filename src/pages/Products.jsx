@@ -19,8 +19,7 @@ export default function Products({ cartOpened, toggleCart }) {
                 <FilterSearch />
                 <FilterSelect />
               </Filter>
-
-                <Cards />
+              <Cards />
             </div>
         </div>
       </div>

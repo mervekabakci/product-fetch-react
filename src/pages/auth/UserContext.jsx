@@ -19,7 +19,6 @@ export default function UserProvider({ children }){
     }, []);
 
     if (loadingUser) {
-        // Kullanıcı bilgisi yüklenene kadar boş sayfa veya loading gösterebilirsin
         return <div>Loading...</div>;
     }
 

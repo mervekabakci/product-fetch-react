@@ -21,7 +21,7 @@ export default function Cards(){
                         onClick={moreHandleClick}
                         disabled={products.length >= total || isLoading}
                     >
-                    {isLoading ? "Yükleniyor..." : "Daha Fazla Göster"}
+                        {isLoading ? "Yükleniyor..." : "Daha Fazla Göster"}
                     </button>
                 </div>
             </div>

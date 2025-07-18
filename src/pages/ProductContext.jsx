@@ -30,15 +30,15 @@ export default function ProductProvider({ children}){
     const categories = Array.from(new Set(products.map(x => x.category)));
 
     function handleChangeSelect(e){
-    setCategory(e.target.value);
+        setCategory(e.target.value);
     }
     function handleChange(e){
-    setSearchPro(e.target.value.toLowerCase());
+        setSearchPro(e.target.value.toLowerCase());
     }
     function moreHandleClick() {
         if (products.length < total) {
-        setSkip(prev => prev + limit);
-    }
+            setSkip(prev => prev + limit);
+        }
     }
     const filteredProducts = products
     .filter(x => x.title.toLowerCase().includes(searchPro) && x.category.includes(category));

@@ -84,7 +84,7 @@ export default function CartProvider({ children }){
             ));
 
             return prev.map(item =>
-            item.id === id ? { ...item, quantity } : item
+                item.id === id ? { ...item, quantity } : item
             );
         });
     };
@@ -93,7 +93,7 @@ export default function CartProvider({ children }){
         const updatedProducts = products.map(product => {
             const cartItem = cart.find(item => item.id === product.id);
             if (cartItem) {
-            return { ...product, stock: product.stock + cartItem.quantity };
+                return { ...product, stock: product.stock + cartItem.quantity };
             }
             return product;
         });

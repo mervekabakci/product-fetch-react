@@ -11,7 +11,7 @@ export default function CardItem({ product }){
                 <span className="category">{product.category}</span>
                 <div>
                     <figure>
-                    <img src={product.thumbnail} alt={product.title} />
+                        <img src={product.thumbnail} alt={product.title} />
                     </figure>
                 </div>
                 <div className="card-body">
@@ -20,8 +20,8 @@ export default function CardItem({ product }){
                 </div>
                 <div className="card-footer">
                     <div className="prod-prop">
-                    <span className="price">{product.price} TL</span>
-                    <span className="stock">Stok: {product.stock} adet</span>
+                        <span className="price">{product.price} TL</span>
+                        <span className="stock">Stok: {product.stock} adet</span>
                     </div>
                     <button
                         disabled={product.stock <= 0}
